@@ -1,0 +1,10 @@
+/* .sideBanner {
+    width: 85%;
+    padding: 0;
+    padding-top: 20px;
+  } */
+  .sideBanner {
+    width: 40%;
+    align-self: center;
+    padding: 8px;
+  }
