@@ -8,8 +8,7 @@ import Categories from "../../Data/Categories";
 import Play from "../../sounds/play.mp3"
 import "./Home.css";
 
-const Home = ({ name, setName, fetchQuestions }) => {
-const [category, setCategory] = useState("");
+const Home = ({ name, setName, category,setCategory, fetchQuestions }) => {
   const [error, setError] = useState(false);
   const history = useHistory();
   const [letsPlay] = useSound(Play);
@@ -28,7 +27,6 @@ const [category, setCategory] = useState("");
 
   return (
     <>
-    <Header/>
     <div className="content">
       <div className="settings">
         <span style={{ fontSize: 30 }}>Quiz Settings</span>
