@@ -9,10 +9,10 @@ import IconButton from '@mui/material/IconButton';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
+// import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MailIcon from '@mui/icons-material/Mail';
+// import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import {
@@ -28,6 +28,7 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import useAuth from '../../hooks/useAuth';
 import AdminRoute from '../../components/LoginAuth/AdminRoute/AdminRoute';
 import Reviews from '../../Pages/Reviews/Reviews';
+import Ranking from '../Ranking/Ranking';
 
 const drawerWidth = 200;
 
@@ -46,21 +47,12 @@ function Dashboard(props) {
             <Divider />
             <Link to="/"><Button color="inherit">Home</Button></Link><br/>
             <Link to={`${url}`}><Button color="inherit">Dashboard</Button></Link>
-            <Link to={`${url}/addReview`}><Button color="inherit">Add Review</Button></Link>
+            <Link to={`${url}/feedBack`}><Button color="inherit">Add Review</Button></Link>
+            {/* <Link to={`${url}/ranking`}><Button color="inherit">LeaderBoard</Button></Link> */}
             {admin && <Box>
                 <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link><br/>
                 <Link to={`${url}/AddQuiz`}><Button color="inherit">Add Quiz</Button></Link>
             </Box>}
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
         </div>
     );
 
@@ -71,6 +63,7 @@ function Dashboard(props) {
             <CssBaseline />
             <AppBar
                 position="fixed"
+                background="transparent"
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
@@ -84,7 +77,7 @@ function Dashboard(props) {
                         onClick={handleDrawerToggle}
                         sx={{ mr: 2, display: { sm: 'none' } }}
                     >
-                        <MenuIcon />
+                        {/* <MenuIcon /> */}
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
                         Dashboard
@@ -130,10 +123,13 @@ function Dashboard(props) {
 
                 <Switch>
                     <Route exact path={path}>
-                        <Reviews/>
+                         <Ranking/>
                     </Route>
                     <Route exact path={`${path}/AddQuiz`}>
                         <AddQuiz/>
+                    </Route>
+                    <Route exact path={`${path}/feedBack`}>
+                    <Reviews/>
                     </Route>
                     <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
