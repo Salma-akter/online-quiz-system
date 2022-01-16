@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Testimonial.css'
 import Testimonial from './Testimonial';
+import Header from '../../components/Header/Header';
 const GetReview = () => {
     const[review, setReview] = useState([])
     useEffect(() => {
@@ -13,16 +14,18 @@ const GetReview = () => {
     } ,[]);
 
     return (
+        <>
+        {/* <Header/> */}
         <div className="container">
             {review.length === 0 && <p>Loading...</p>}
-            <h1 className="my-5 header">What People Say About Us</h1>
+            <h1 className="my-5 header">Few good words about us!</h1>
       <div className="row">
           {
               review.map(data => <Testimonial data={data}/>)
           }
       </div>
         </div>
-      
+        </>
     );
 };
 
