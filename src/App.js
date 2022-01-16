@@ -17,6 +17,7 @@ function App() {
   const [questions, setQuestions] = useState();
   const [name, setName] = useState();
   const [score, setScore] = useState(0);
+  const [category, setCategory] = useState('');
 
   const fetchQuestions = async (category = "") => {
     const { data } = await axios.get(`http://localhost:8000/quiz?category=` + category);
@@ -33,6 +34,8 @@ function App() {
               name={name}
               setName={setName}
               fetchQuestions={fetchQuestions}
+              category={category}
+              setCategory={setCategory}
             />
           </PrivateRoute>
           <PrivateRoute path="/quiz">
@@ -45,7 +48,7 @@ function App() {
             />
           </PrivateRoute>
           <Route path="/result">
-            <Result name={name} score={score} />
+            <Result name={name} score={score} category={category} />
           </Route>
           <Route path="/dashboard">
             <Dashboard/>
